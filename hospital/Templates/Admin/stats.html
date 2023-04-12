@@ -1,9 +1,13 @@
 {% extends 'admin/master.html' %}
 
 {% block body %}
-<h1 class="text-center text-success">THÔNG KÊ DOANH THU THEO THÁNG</h1>
+<style>
+tfoot {color: red;}
+}
+</style>
+<h1 class="text-center text-success">THỐNG KÊ DOANH THU THEO THÁNG</h1>
 <div class="row">
-    <div class="col-md-5 col-sm-12">
+    <div class="col-md-6 col-sm-12">
         <table class="table">
             <tr>
                 <th>Ngày</th>
@@ -11,24 +15,35 @@
                 <th>Doanh thu</th>
                 <th>Tỷ lệ</th>
             </tr>
-            {% for s in stats %}
+            {% for s in month_stats %}
             <tr>
                 <td>{{ s[0] }}</td>
                 <td>{{ s[1] }}</td>
                 <td>{{ "{:,.0f}".format(s[2]) }} VNĐ</td>
-                <td>chưa có</td>
+                <td>{{ s[3] }} %</td>
             </tr>
             {% endfor %}
+            <tfoot>
+            <tr>
+                <th colspan="2">Tổng doanh thu</th>
+                {% for s in total %}
+                {% if s[0]==none %}
+                {% else %}
+                <td colspan="2">{{ "{:,.0f}".format(s[0]) }} VNĐ</td>
+                {% endif %}
+                {% endfor %}
+            </tr>
+            </tfoot>
         </table>
     </div>
-    <div class="col-md-7 col-sm-12">
+    <div class="col-md-6 col-sm-12">
         <form>
-             <div class="form-group">
-                 <label>Nhập tháng muốn thống kê</label>
-                <input type="text" name="month" class="form-control"  />
+            <div class="form-group">
+                <label>Nhập tháng muốn thống kê</label>
+                <input type="text" name="month" class="form-control"/>
             </div>
             <div>
-                <input type="submit" value="Lọc dữ liệu" class="btn btn-info" />
+                <input type="submit" value="Lọc dữ liệu" class="btn btn-info"/>
             </div>
         </form>
         <canvas id="revenueStats"></canvas>
@@ -39,8 +54,8 @@
 <script>
     let labels = []
     let data = []
-    {% for s in stats %}
-    labels.push('{{ s[1] }}')
+    {% for s in month_stats %}
+    labels.push('{{ s[0] }}')
     data.push({{ s[2] }})
     {% endfor %}
     window.onload = function() {

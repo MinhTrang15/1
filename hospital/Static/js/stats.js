@@ -20,6 +20,7 @@ function drawCateChart(labels, data) {
     }
   });
 }
+
 function drawRevenueChart(labels, data) {
 const ctx = document.getElementById('revenueStats');
 

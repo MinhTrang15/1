@@ -1,0 +1,58 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+<form method="post" action="{{url_for('home')}}">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" >
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner container">
+            <div class="carousel-item active">
+                <img src="https://res.cloudinary.com/dllxmojkx/image/upload/v1680838865/Ph%C3%B2ng_m%E1%BA%A1ch_4_mbboyi.png"
+                     class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://res.cloudinary.com/dllxmojkx/image/upload/v1680838867/Ph%C3%B2ng_m%E1%BA%A1ch_3_qg6tha.png"
+                     class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://res.cloudinary.com/dllxmojkx/image/upload/v1680801523/Ph%C3%B2ng_m%E1%BA%A1ch_2_z2kkln.png"
+                     class="d-block w-100"
+                     alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://res.cloudinary.com/dllxmojkx/image/upload/v1680801484/Ph%C3%B2ng_m%E1%BA%A1ch_1_l6xbpf.png"
+                     class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="css-175oi2r ">
+        <hr width="100%" size="7px" align="center"/>
+        <div data-media="rnmq-2830bfdc rnmq-3c60b41f rnmq-7733d8ce"
+             class="css-1rynq56" style="padding: 5px 10px;margin-top: 5px;
+                     margin-right: 200; margin-left: 200; margin-bottom: 25px; text-align: justify; font-size: 22px; width: 1300px;">
+            Phòng khám được thành lập vào ngày 5/4/2020 với các kỹ thuật tiên tiến từ nước ngoài, đảm bảo mang lại
+            hiệu quả điều trị cao. Phòng khám tư HEALTH CARE tự tin trở thành người bạn đồng hành tốt nhất cho bạn và gia đình bạn.
+            Với định hướng mang lại một dịch vụ y tế toàn diện, liên tục, tận tâm và tiên tiến, phòng khám đã thành lập
+            một hệ thống các cơ sở y tế khép kín, nhằm mang lại những tiện ích cho bệnh nhân khi sử dụng dịch vụ.
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+

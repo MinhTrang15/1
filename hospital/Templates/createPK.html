@@ -1,11 +1,13 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
-<h1 class="text-center text-success">Lập phiếu khám bệnh</h1>
+<body>
+<h1 class="text-center text-body">Lập phiếu khám bệnh</h1>
 <table class="table">
     <tr>
         <th>Mã bệnh nhân</th>
         <th>Tên bệnh nhân</th>
+        <th>Số điện thoại</th>
         <th>Địa chỉ</th>
         <th></th>
     </tr>
@@ -13,12 +15,67 @@
     <tr>
         <td>{{ b.id }}</td>
         <td>{{ b.name }}</td>
+        <td>{{ b.phone }}</td>
         <td>{{ b.address }}</td>
         <td>
-              <a href="javascript:;" onclick="create({{ b.id }},'{{ b.name }}')" class="btn btn-danger">Lập phiếu khám</a>
+            <a href="javascript:;" onclick="create({{ b.id }},'{{ b.name }}')" class="btn btn-danger">Lập phiếu khám</a>
         </td>
     </tr>
     {% endfor %}
 </table>
-
+<h1 class="text-center text-body">Xem lịch sử bệnh nhân</h1>
+<form action="{{url_for('lichsu')}}">
+    <input type="number" name="keyword" placeholder="Nhập id bệnh nhân"/>
+    <input type="submit" class="btn btn-danger" value="Tìm"/>
+    <div>
+        <table border="1" class="table table bordered" width="50%">
+            <tr>
+                <th></th>
+                <th> ID bệnh nhân</th>
+                <th> Ngày khám</th>
+                <th> Triệu chứng</th>
+                <th> Bệnh</th>
+            </tr>
+            {% for p in lichsu %}
+            <tr class="{% if request.args['p_p.benh_nhan_id']==p.id|string %}bg-warning{% endif %}"
+                id="{{p.benh_nhan_id}}">
+                <td></td>
+                <td>{{p.benh_nhan_id}}</td>
+                <td>{{p.ngay_kham}}</td>
+                <td>{{p.trieu_chung}}</td>
+                <td>{{p.loai_benh}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</form>
+<h1 class="text-center text-body">Danh mục thuốc</h1>
+<form action="{{url_for('tracuuthuoc')}}">
+    <input type="text" name="keyword" placeholder="Nhập tên thuốc"/>
+    <input type="number" name="price" placeholder="Nhập giá thuốc"/>
+    <input type="submit" class="btn btn-danger" value="Tìm"/>
+    <div>
+        <table border="1" class="table table bordered" width="50%">
+            <tr>
+                <th></th>
+                <th> Mã thuốc</th>
+                <th> Tên thuốc</th>
+                <th> Giá</th>
+                <th> Mã đơn vị</th>
+                <th> Mã loại thuốc</th>
+            </tr>
+            {% for p in tracuuthuoc %}
+            <tr class="{% if request.args['p_p.id']==p.id|string %}bg-warning{% endif %}" id="p{{p.id}}">
+                <td></td>
+                <td>{{p.id}}</td>
+                <td>{{p.name}}</td>
+                <td>{{p.price}} VNĐ</td>
+                <td>{{p.unit_id}}</td>
+                <td>{{p.category_id}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</form>
+</body>
 {% endblock %}

@@ -2,17 +2,18 @@
 
 {% block content %}
 {% if success_msg %}
-<div class="alert alert-success">
+<div class="alert alert-success ">
     <h4>{{ success_msg }}</h4>
 </div>
 {% endif %}
-<h1 class="text-center text-success">Lập danh sách khám</h1>
+<h1 class="text-center text-body" >Lập danh sách khám</h1>
 <table class="table">
     <tr>
         <th>Mã bệnh nhân</th>
         <th>Tên bệnh nhân</th>
         <th>Giới tính</th>
         <th>Ngày sinh</th>
+        <th>Số điện thoại</th>
         <th>Địa chỉ</th>
     </tr>
     {% for b in benh %}
@@ -21,6 +22,7 @@
         <td>{{ b.name }}</td>
         <td>{{ b.sex }}</td>
         <td>{{ b.birthday }}</td>
+        <td>{{ b.phone }}</td>
         <td>{{ b.address }}</td>
     </tr>
     {% endfor %}

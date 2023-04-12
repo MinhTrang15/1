@@ -14,14 +14,18 @@
     <script defer src="{{ url_for('static', filename='js/pk.js') }}"></script>
 </head>
 <body>
-    {% block header %}
-        {% include 'layout/header.html'  %}
-    {% endblock %}
-    <div class="container">
-    {% block content required %}{% endblock %}
+<div class="box-scroll">
+    <div class="force-overflow">
+        {% block header %}
+        {% include 'layout/header.html' %}
+        {% endblock %}
+        <div class="container">
+            {% block content required %}{% endblock %}
+        </div>
+        {% block footer %}
+        {% include 'layout/footer.html' %}
+        {% endblock %}
     </div>
-    {% block footer %}
-        {% include 'layout/footer.html'  %}
-    {% endblock %}
+</div>
 </body>
 </html>

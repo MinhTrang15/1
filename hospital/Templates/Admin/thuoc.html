@@ -1,7 +1,7 @@
 {% extends 'admin/master.html' %}
 
 {% block body %}
-<h1 class="text-center text-success">THÔNG KÊ TẦN SUẤT SỬ DỤNG THUỐC THEO THÁNG</h1>
+<h1 class="text-center text-success">THỐNG KÊ TẦN SUẤT SỬ DỤNG THUỐC THEO THÁNG</h1>
 <div class="row">
     <div class="col-md-5 col-sm-12">
         <table class="table">
@@ -14,19 +14,22 @@
             <tr>
                 <td>{{ s[0] }}</td>
                 <td>{{ s[1] }}</td>
-                <td>{{ s[2] }}</td>
+                {% if s[2]==none %}
+                {% else %}
+                <td>{{ "{:.0f}".format(s[2]) }}</td>
+                {% endif %}
             </tr>
             {% endfor %}
         </table>
     </div>
     <div class="col-md-7 col-sm-12">
         <form>
-             <div class="form-group">
-                 <label>Nhập tháng muốn thống kê</label>
-                <input type="text" name="month" class="form-control"  />
+            <div class="form-group">
+                <label>Nhập tháng muốn thống kê</label>
+                <input type="text" name="month" class="form-control"/>
             </div>
             <div>
-                <input type="submit" value="Lọc dữ liệu" class="btn btn-info" />
+                <input type="submit" value="Lọc dữ liệu" class="btn btn-info"/>
             </div>
         </form>
         <canvas id="cateStats"></canvas>

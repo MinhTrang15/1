@@ -1,0 +1,49 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+<h1 class="text-center text-body">Phiếu khám bệnh</h1>
+<form method="post" action="{{url_for('donthuoc')}}">
+    <p>Mã bệnh nhân : {{ session['user_infor']['id'] }}</p>
+    <p>Họ và tên bệnh nhân : {{ session['user_infor']['name'] }}</p>
+    <div class="form-floating mb-3 mt-3">
+        <input type="text" class="form-control" id="trieuChung" placeholder="Nhập triệu chứng"
+               name="trieuChung">
+        <label for="trieuChung">Triệu chứng</label>
+    </div>
+    <div class="form-floating mb-3 mt-3">
+        <input type="text" class="form-control" id="benh" placeholder="Nhập dự đoán loại bệnh" name="benh">
+        <label for="benh">Dự đoán loại bệnh</label>
+    </div>
+    {% if 'thuoc' in session and session['thuoc'] %}
+    <div class="form-floating mb-3 mt-3">
+        <div class="row">
+            {% for c in session['thuoc'].values() %}
+            <div class="col-md-5 col-sm-12">
+                <p>Tên Thuốc: {{c.name}}</p>
+            </div>
+            <div class="col-md-5 col-sm-12">
+                <p>Số lượng: {{c.sl}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    <br/>
+    <select class="form-select form-select-lg mb-3" name="thuoc">
+        {% for t in thuoc %}
+        <option name="thuoc">{{ t.name }}</option>
+        {% endfor %}
+    </select>
+    <div class="form-floating mb-3 mt-3">
+        <input type="number" class="form-control" id="sl" placeholder="Nhập số lượng" name="sl">
+        <label for="sl">Số lượng</label>
+    </div>
+    <div class="form-floating mb-3 mt-3">
+        <input type="text" class="form-control" id="dung" placeholder="Nhập cách dùng thuốc" name="dung">
+        <label for="dung">Cách dùng thuốc</label>
+    </div>
+    <input type="submit" value="Thêm Thuốc" class="btn btn-success"/>
+    <br>
+    <br>
+</form>
+{% endblock %}

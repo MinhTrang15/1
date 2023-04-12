@@ -8,9 +8,7 @@
 {% endif %}
 <br>
 <h1 class="text-center text-danger">Thanh toán hóa đơn</h1>
-
 <form method="post" action="{{url_for('pay')}}">
-
     <div class="form-floating mt-3 mb-3">
         <input type="number" class="form-control" id="id" placeholder="Nhập tên đăng nhập" name="id">
         <label for="id">Mã bệnh nhân</label>
@@ -30,7 +28,7 @@
         <th></th>
     </tr>
     <tr>
-        <td>{{ benh_id }}</td>
+        <td>{{ benh_nhan_id }}</td>
         <td>{{ "{:,.0f}".format(tienkham) }} VNĐ</td>
         <td>{{ "{:,.0f}".format(tienthuoc) }} VNĐ</td>
         <td>{{ "{:,.0f}".format(tongtien) }} VNĐ</td>

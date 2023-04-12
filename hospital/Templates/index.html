@@ -2,12 +2,12 @@
 
 {% block content %}
 {% if success_msg %}
-<div class="alert alert-success">
+<div class="alert alert-success" xmlns="http://www.w3.org/1999/html">
     <h4>{{ success_msg }}</h4>
 </div>
 {% endif %}
-<h1 class="text-center text-success">Đăng ký khám bệnh</h1>
-<form method="post" action="{{url_for('index')}}">
+<h1 class="text-center text-body">Đăng ký khám bệnh</h1>
+<form method="post" action="{{url_for('register')}}">
     <div class="form-floating mb-3 mt-3">
         <input type="text" class="form-control" id="name" placeholder="Nhập họ và tên" name="name">
         <label for="name">Nhập họ và tên</label>
@@ -16,18 +16,20 @@
         <input type="text" class="form-control" id="sex" placeholder="Nhập giới tính" name="sex">
         <label for="sex">Nhập giới tính</label>
     </div>
-   <div class="form-floating mt-3 mb-3">
-        <input type="date" id="birthday" name="birthday" placeholder="Nhập năm sinh" class="form-control"  />
+    <div class="form-floating mt-3 mb-3">
+        <input type="date" id="birthday" name="birthday" placeholder="Nhập năm sinh" class="form-control"/>
         <label for="birthday">Ngày Sinh</label>
     </div>
-
+    <div class="form-floating mt-3 mb-3">
+        <input type="text" id="phone" name="phone" placeholder="Nhập số điện thoại" class="form-control"/>
+        <label for="phone">Số điện thoại</label>
+    </div>
     <div class="form-floating mt-3 mb-3">
         <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ" name="address">
         <label for="address">Nhập địa chỉ</label>
     </div>
-
     <div>
-        <input type="submit" value="Hoàn tất"  class="btn btn-success" />
+        <input type="submit" value="Hoàn tất" class="btn btn-success"/>
     </div>
 </form>
 {% endblock %}

@@ -1,7 +1,24 @@
 * {
-    font-family: Tahoma;
+    font-family: Times New Roman;
+    font-size: medium;
 }
-
+.navbar{
+  height: 50px
+}
+.navbar-brand{
+  font-size: 30px;
+}
+.nav-link{
+  font-size: 25px;
+}
 body {
-    background-color: white;
+    background-color:#C6E2FF;
+}
+.box-scroll{
+    width:1530px;
+    height:635px;
+    overflow-y: scroll;
+}
+.footer {
+ height: 110px
 }
